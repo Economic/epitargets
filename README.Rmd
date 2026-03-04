@@ -1,0 +1,91 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# epitargets
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+epitargets extends the [{targets}](https://docs.ropensci.org/targets/) pipeline framework with automatic date-tracking and age-based cues, and other convenience functions.
+
+## Installation
+
+``` r
+install.packages(
+   "epitargets",
+   repos = c("https://economic.r-universe.dev", getOption("repos"))
+)
+```
+
+## Usage
+
+```{r}
+library(epitargets)
+```
+
+### Track when targets were last built
+
+`tar_target_date()` is a drop-in replacement for `targets::tar_target()`. It creates your target plus a companion `_date` target that records when it ran:
+
+```{r}
+targets::tar_dir({
+  targets::tar_script({
+    library(epitargets)
+    list(
+      tar_target_date(wages, data.frame(year = 2020:2024, wage = c(15, 15, 16, 17, 18)))
+    )
+  })
+  targets::tar_make()
+  print(targets::tar_read(wages))
+  print(targets::tar_read(wages_date))
+})
+```
+
+### Auto-refresh targets on a schedule
+
+`tar_age_date()` adds an age-based cue so the target automatically re-runs after a time period. Useful for API calls or any data that goes stale:
+
+```{r}
+targets::tar_dir({
+  targets::tar_script({
+    library(epitargets)
+    list(
+      tar_age_date(daily_data, Sys.time(), age = as.difftime(1, units = "days"))
+    )
+  })
+  targets::tar_make()
+  print(targets::tar_read(daily_data))
+  print(targets::tar_read(daily_data_date))
+})
+```
+
+### Summarize freshness across targets
+
+`collect_target_date()` gathers `_date` targets into a single tibble so you can see at a glance when each target last ran:
+
+```{r}
+targets::tar_dir({
+  targets::tar_script({
+    library(epitargets)
+    list(
+      tar_target_date(wages, data.frame(wage = 18)),
+      tar_age_date(prices, data.frame(price = 3.50)),
+      targets::tar_target(freshness, collect_target_date(wages_date, prices_date))
+    )
+  })
+  targets::tar_make()
+  targets::tar_read(freshness)
+})
+```

@@ -1,0 +1,25 @@
+Package: epitargets
+Title: Economic Policy Institute tools for working with targets
+Version: 0.1.0
+Authors@R:
+    c(person(given = "Ben",
+             family = "Zipperer",
+             role = c("aut", "cre"),
+             email = "benzipperer@gmail.com"),
+      person(given = "Economic Policy Institute",
+             role = c("cph", "fnd")))
+Description: Additional utilities to use the targets R package.
+License: MIT + file LICENSE
+URL: https://economic.github.io/epitargets/, https://github.com/Economic/epitargets
+BugReports: https://github.com/economic/epitargets/issues
+Imports:
+    readr,
+    targets,
+    tarchetypes,
+    tibble
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

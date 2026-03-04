@@ -1,0 +1,122 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# epitargets
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+epitargets extends the [{targets}](https://docs.ropensci.org/targets/)
+pipeline framework with automatic date-tracking and age-based cues, and
+other convenience functions.
+
+## Installation
+
+``` r
+install.packages(
+   "epitargets",
+   repos = c("https://economic.r-universe.dev", getOption("repos"))
+)
+```
+
+## Usage
+
+``` r
+library(epitargets)
+```
+
+### Track when targets were last built
+
+`tar_target_date()` is a drop-in replacement for
+`targets::tar_target()`. It creates your target plus a companion `_date`
+target that records when it ran:
+
+``` r
+targets::tar_dir({
+  targets::tar_script({
+    library(epitargets)
+    list(
+      tar_target_date(wages, data.frame(year = 2020:2024, wage = c(15, 15, 16, 17, 18)))
+    )
+  })
+  targets::tar_make()
+  print(targets::tar_read(wages))
+  print(targets::tar_read(wages_date))
+})
+#> + wages dispatched
+#> ✔ wages completed [0ms, 191 B]
+#> + wages_date dispatched
+#> ✔ wages_date completed [0ms, 81 B]
+#> ✔ ended pipeline [123ms, 2 completed, 0 skipped]
+#>   year wage
+#> 1 2020   15
+#> 2 2021   15
+#> 3 2022   16
+#> 4 2023   17
+#> 5 2024   18
+#> [1] "2026-03-03"
+```
+
+### Auto-refresh targets on a schedule
+
+`tar_age_date()` adds an age-based cue so the target automatically
+re-runs after a time period. Useful for API calls or any data that goes
+stale:
+
+``` r
+targets::tar_dir({
+  targets::tar_script({
+    library(epitargets)
+    list(
+      tar_age_date(daily_data, Sys.time(), age = as.difftime(1, units = "days"))
+    )
+  })
+  targets::tar_make()
+  print(targets::tar_read(daily_data))
+  print(targets::tar_read(daily_data_date))
+})
+#> + daily_data dispatched
+#> ✔ daily_data completed [1ms, 96 B]
+#> + daily_data_date dispatched
+#> ✔ daily_data_date completed [0ms, 81 B]
+#> ✔ ended pipeline [115ms, 2 completed, 0 skipped]
+#> [1] "2026-03-03 21:14:59 EST"
+#> [1] "2026-03-03"
+```
+
+### Summarize freshness across targets
+
+`collect_target_date()` gathers `_date` targets into a single tibble so
+you can see at a glance when each target last ran:
+
+``` r
+targets::tar_dir({
+  targets::tar_script({
+    library(epitargets)
+    list(
+      tar_target_date(wages, data.frame(wage = 18)),
+      tar_age_date(prices, data.frame(price = 3.50)),
+      targets::tar_target(freshness, collect_target_date(wages_date, prices_date))
+    )
+  })
+  targets::tar_make()
+  targets::tar_read(freshness)
+})
+#> + prices dispatched
+#> ✔ prices completed [0ms, 118 B]
+#> + wages dispatched
+#> ✔ wages completed [0ms, 118 B]
+#> + prices_date dispatched
+#> ✔ prices_date completed [0ms, 81 B]
+#> + wages_date dispatched
+#> ✔ wages_date completed [0ms, 81 B]
+#> + freshness dispatched
+#> ✔ freshness completed [2ms, 179 B]
+#> ✔ ended pipeline [175ms, 5 completed, 0 skipped]
+#> # A tibble: 2 × 2
+#>   name   time      
+#>   <chr>  <date>    
+#> 1 wages  2026-03-03
+#> 2 prices 2026-03-03
+```
