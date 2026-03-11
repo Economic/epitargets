@@ -4,4 +4,5 @@
 ^pkgdown$
 ^\.github$
 ^CLAUDE\.md$
+^\.claude$
 ^README\.Rmd$

@@ -1,3 +1,62 @@
+#' Read a CSV file as a target
+#'
+#' A convenience wrapper around [tarchetypes::tar_file_read()] for CSV files.
+#' Creates a pair of targets: one to track the file with `format = "file"`,
+#' and another to read the file with [readr::read_csv()].
+#'
+#' @param name Symbol, name of the target.
+#' @param command Expression, R code that returns the file path to the CSV.
+#' @param .readr_args A named list of additional arguments passed to
+#'   [readr::read_csv()]. Defaults to `list(show_col_types = FALSE)`.
+#'   Supplying this argument replaces the defaults entirely.
+#' @param ... Additional arguments passed to [targets::tar_target_raw()]
+#'   for the read target.
+#'
+#' @return A list of two target objects: a file-tracking target
+#'   (`name_file`) and a CSV-reading target (`name`).
+#' @export
+#'
+#' @examples
+#' if (identical(Sys.getenv("TAR_EXAMPLES"), "true")) {
+#' targets::tar_dir({
+#'   targets::tar_script({
+#'     library(targets)
+#'     list(
+#'       epitargets::tar_csv_read(my_data, "data.csv")
+#'     )
+#'   })
+#'   targets::tar_manifest()
+#' })
+#' }
+tar_csv_read <- function(
+  name,
+  command,
+  .readr_args = list(show_col_types = FALSE),
+  ...
+) {
+  name_str <- deparse(substitute(name))
+  command_expr <- substitute(command)
+  name_file <- paste0(name_str, "_file")
+
+  read_call <- as.call(c(
+    list(quote(readr::read_csv), file = as.name(name_file)),
+    .readr_args
+  ))
+
+  list(
+    targets::tar_target_raw(
+      name = name_file,
+      command = command_expr,
+      format = "file"
+    ),
+    targets::tar_target_raw(
+      name = name_str,
+      command = read_call,
+      ...
+    )
+  )
+}
+
 #' Write data to a CSV file and return the file path
 #'
 #' A thin wrapper around [readr::write_csv()] that writes `data` to `file` and
@@ -101,7 +160,12 @@ tar_target_date <- function(name, command, ...) {
 #'   targets::tar_read(x_date)
 #' })
 #' }
-tar_age_date <- function(name, command, age = as.difftime(1, units = "days"), ...) {
+tar_age_date <- function(
+  name,
+  command,
+  age = as.difftime(1, units = "days"),
+  ...
+) {
   name_str <- deparse(substitute(name))
   command_expr <- substitute(command)
 

@@ -61,7 +61,11 @@ test_that("tar_age_date returns a list of two targets with correct names", {
 })
 
 test_that("tar_age_date main target has an age-based cue", {
-  result <- tar_age_date(api_target, 1 + 1, age = as.difftime(7, units = "days"))
+  result <- tar_age_date(
+    api_target,
+    1 + 1,
+    age = as.difftime(7, units = "days")
+  )
   main <- result[[1]]
 
   expect_s3_class(main$cue, "tar_cue")

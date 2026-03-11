@@ -3,4 +3,5 @@
 export(collect_target_date)
 export(create_csv)
 export(tar_age_date)
+export(tar_csv_read)
 export(tar_target_date)
