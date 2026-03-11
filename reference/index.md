@@ -8,5 +8,7 @@
   : Write data to a CSV file and return the file path
 - [`tar_age_date()`](https://economic.github.io/epitargets/reference/tar_age_date.md)
   : Create an age-cued target with a companion date target
+- [`tar_csv_read()`](https://economic.github.io/epitargets/reference/tar_csv_read.md)
+  : Read a CSV file as a target
 - [`tar_target_date()`](https://economic.github.io/epitargets/reference/tar_target_date.md)
   : Create a target with a companion date target

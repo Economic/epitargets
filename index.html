@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">epitargets</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -85,14 +86,14 @@
 <span><span class="co">#&gt; ✔ wages completed [0ms, 191 B]</span></span>
 <span><span class="co">#&gt; + wages_date dispatched</span></span>
 <span><span class="co">#&gt; ✔ wages_date completed [0ms, 81 B]</span></span>
-<span><span class="co">#&gt; ✔ ended pipeline [123ms, 2 completed, 0 skipped]</span></span>
+<span><span class="co">#&gt; ✔ ended pipeline [126ms, 2 completed, 0 skipped]</span></span>
 <span><span class="co">#&gt;   year wage</span></span>
 <span><span class="co">#&gt; 1 2020   15</span></span>
 <span><span class="co">#&gt; 2 2021   15</span></span>
 <span><span class="co">#&gt; 3 2022   16</span></span>
 <span><span class="co">#&gt; 4 2023   17</span></span>
 <span><span class="co">#&gt; 5 2024   18</span></span>
-<span><span class="co">#&gt; [1] "2026-03-03"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2026-03-11"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="auto-refresh-targets-on-a-schedule">Auto-refresh targets on a schedule<a class="anchor" aria-label="anchor" href="#auto-refresh-targets-on-a-schedule"></a>
@@ -111,12 +112,12 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_read.html" class="external-link">tar_read</a></span><span class="op">(</span><span class="va">daily_data_date</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; + daily_data dispatched</span></span>
-<span><span class="co">#&gt; ✔ daily_data completed [1ms, 96 B]</span></span>
+<span><span class="co">#&gt; ✔ daily_data completed [0ms, 96 B]</span></span>
 <span><span class="co">#&gt; + daily_data_date dispatched</span></span>
-<span><span class="co">#&gt; ✔ daily_data_date completed [0ms, 81 B]</span></span>
-<span><span class="co">#&gt; ✔ ended pipeline [115ms, 2 completed, 0 skipped]</span></span>
-<span><span class="co">#&gt; [1] "2026-03-03 21:14:59 EST"</span></span>
-<span><span class="co">#&gt; [1] "2026-03-03"</span></span></code></pre></div>
+<span><span class="co">#&gt; ✔ daily_data_date completed [1ms, 81 B]</span></span>
+<span><span class="co">#&gt; ✔ ended pipeline [120ms, 2 completed, 0 skipped]</span></span>
+<span><span class="co">#&gt; [1] "2026-03-11 17:10:27 EDT"</span></span>
+<span><span class="co">#&gt; [1] "2026-03-11"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summarize-freshness-across-targets">Summarize freshness across targets<a class="anchor" aria-label="anchor" href="#summarize-freshness-across-targets"></a>
@@ -136,7 +137,7 @@
 <span>  <span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_read.html" class="external-link">tar_read</a></span><span class="op">(</span><span class="va">freshness</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; + prices dispatched</span></span>
-<span><span class="co">#&gt; ✔ prices completed [0ms, 118 B]</span></span>
+<span><span class="co">#&gt; ✔ prices completed [1ms, 118 B]</span></span>
 <span><span class="co">#&gt; + wages dispatched</span></span>
 <span><span class="co">#&gt; ✔ wages completed [0ms, 118 B]</span></span>
 <span><span class="co">#&gt; + prices_date dispatched</span></span>
@@ -144,13 +145,13 @@
 <span><span class="co">#&gt; + wages_date dispatched</span></span>
 <span><span class="co">#&gt; ✔ wages_date completed [0ms, 81 B]</span></span>
 <span><span class="co">#&gt; + freshness dispatched</span></span>
-<span><span class="co">#&gt; ✔ freshness completed [2ms, 179 B]</span></span>
-<span><span class="co">#&gt; ✔ ended pipeline [175ms, 5 completed, 0 skipped]</span></span>
+<span><span class="co">#&gt; ✔ freshness completed [3ms, 179 B]</span></span>
+<span><span class="co">#&gt; ✔ ended pipeline [151ms, 5 completed, 0 skipped]</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;   name   time      </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;date&gt;    </span></span>
-<span><span class="co">#&gt; 1 wages  2026-03-03</span></span>
-<span><span class="co">#&gt; 2 prices 2026-03-03</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 wages  2026-03-11</span></span>
+<span><span class="co">#&gt; 2 prices 2026-03-11</span></span></code></pre></div>
 </div>
 </div>
 </div>
