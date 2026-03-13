@@ -1,4 +1,4 @@
 url: https://economic.github.io/epitargets
 template:
-  bootstrap: 5
+  package: epitemplate
 
