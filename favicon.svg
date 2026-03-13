@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="280"><svg viewBox="0 0 240 280" width="240" height="280">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900');
+      .epi-text {
+        font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+        font-weight: 900;
+        fill: #1a1a1a;
+      }
+      .targets-text {
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-weight: 600;
+        fill: #555555;
+      }
+    </style>
+    <!-- Arrow marker for pipeline ends -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#2166ac"></path>
+    </marker>
+    <!-- Circle node marker -->
+    <marker id="node-start" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
+      <circle cx="5" cy="5" r="4" fill="#2166ac"></circle>
+    </marker>
+  </defs>
+
+  <!-- Background rounded rectangle -->
+  <rect x="4" y="4" width="232" height="272" rx="16" ry="16" fill="white" stroke="#e0e0e0" stroke-width="1.5"></rect>
+
+  <!-- EPI text - large bold serif -->
+  <text x="120" y="105" text-anchor="middle" class="epi-text" font-size="88" letter-spacing="4">
+    EPI
+  </text>
+
+  <!-- targets text - monospace, lighter -->
+  <text x="120" y="155" text-anchor="middle" class="targets-text" font-size="38" letter-spacing="1">
+    targets
+  </text>
+
+  <!-- Pipeline visualization: nodes and arrows flowing from "targets" -->
+  <!-- Main horizontal pipeline -->
+  <line x1="38" y1="190" x2="202" y2="190" stroke="#2166ac" stroke-width="2.5" marker-end="url(#arrow)"></line>
+  <circle cx="38" cy="190" r="5" fill="#2166ac"></circle>
+  <circle cx="90" cy="190" r="5" fill="#2166ac"></circle>
+  <circle cx="148" cy="190" r="5" fill="#2166ac"></circle>
+
+  <!-- Branching pipeline - upper fork -->
+  <line x1="90" y1="190" x2="148" y2="210" stroke="#4393c3" stroke-width="2" stroke-dasharray="none"></line>
+  <circle cx="148" cy="210" r="4" fill="#4393c3"></circle>
+
+  <!-- Converging arrow from branch -->
+  <line x1="148" y1="210" x2="196" y2="190" stroke="#4393c3" stroke-width="2"></line>
+
+  <!-- Lower pipeline row - parallel branch -->
+  <line x1="38" y1="232" x2="145" y2="232" stroke="#92c5de" stroke-width="2" marker-end="url(#arrow)"></line>
+  <circle cx="38" cy="232" r="4" fill="#92c5de"></circle>
+  <circle cx="78" cy="232" r="4" fill="#92c5de"></circle>
+
+  <!-- Date companion targets (small squares to differentiate) -->
+  <rect x="112" y="228" width="8" height="8" rx="1" fill="#d6604d" opacity="0.85"></rect>
+  <line x1="120" y1="232" x2="145" y2="232" stroke="#92c5de" stroke-width="2"></line>
+
+  <!-- Cross-connection between pipelines -->
+  <line x1="78" y1="232" x2="90" y2="190" stroke="#b0b0b0" stroke-width="1.2" stroke-dasharray="4 3"></line>
+
+  <!-- Legend: small date-target indicator -->
+  <rect x="38" y="256" width="7" height="7" rx="1" fill="#d6604d" opacity="0.85"></rect>
+  <text x="50" y="263" font-family="'SF Mono', 'Consolas', monospace" font-size="9" fill="#888">_date targets</text>
+
+  <circle cx="125" cy="259.5" r="3.5" fill="#2166ac"></circle>
+  <text x="133" y="263" font-family="'SF Mono', 'Consolas', monospace" font-size="9" fill="#888">pipeline nodes</text>
+</svg></svg>

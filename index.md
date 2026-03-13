@@ -40,17 +40,17 @@ targets::tar_dir({
   print(targets::tar_read(wages_date))
 })
 #> + wages dispatched
-#> ✔ wages completed [0ms, 191 B]
+#> ✔ wages completed [1ms, 191 B]
 #> + wages_date dispatched
 #> ✔ wages_date completed [0ms, 81 B]
-#> ✔ ended pipeline [126ms, 2 completed, 0 skipped]
+#> ✔ ended pipeline [117ms, 2 completed, 0 skipped]
 #>   year wage
 #> 1 2020   15
 #> 2 2021   15
 #> 3 2022   16
 #> 4 2023   17
 #> 5 2024   18
-#> [1] "2026-03-11"
+#> [1] "2026-03-13"
 ```
 
 ### Auto-refresh targets on a schedule
@@ -74,10 +74,10 @@ targets::tar_dir({
 #> + daily_data dispatched
 #> ✔ daily_data completed [0ms, 96 B]
 #> + daily_data_date dispatched
-#> ✔ daily_data_date completed [1ms, 81 B]
-#> ✔ ended pipeline [120ms, 2 completed, 0 skipped]
-#> [1] "2026-03-11 17:10:27 EDT"
-#> [1] "2026-03-11"
+#> ✔ daily_data_date completed [0ms, 81 B]
+#> ✔ ended pipeline [116ms, 2 completed, 0 skipped]
+#> [1] "2026-03-13 10:35:03 EDT"
+#> [1] "2026-03-13"
 ```
 
 ### Summarize freshness across targets
@@ -108,11 +108,11 @@ targets::tar_dir({
 #> + wages_date dispatched
 #> ✔ wages_date completed [0ms, 81 B]
 #> + freshness dispatched
-#> ✔ freshness completed [3ms, 179 B]
-#> ✔ ended pipeline [151ms, 5 completed, 0 skipped]
+#> ✔ freshness completed [2ms, 179 B]
+#> ✔ ended pipeline [142ms, 5 completed, 0 skipped]
 #> # A tibble: 2 × 2
 #>   name   time      
 #>   <chr>  <date>    
-#> 1 wages  2026-03-11
-#> 2 prices 2026-03-11
+#> 1 wages  2026-03-13
+#> 2 prices 2026-03-13
 ```
