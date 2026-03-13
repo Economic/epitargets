@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# epitargets
+# epitargets <a href="https://economic.github.io/epitargets/"><img src="man/figures/logo.png" align="right" width="120" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->

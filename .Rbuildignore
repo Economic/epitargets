@@ -6,3 +6,4 @@
 ^CLAUDE\.md$
 ^\.claude$
 ^README\.Rmd$
+^data-raw$
