@@ -1,15 +1,15 @@
-# Read a CSV file as a target
+# Read a Parquet file as a target
 
 A convenience wrapper around
 [`tarchetypes::tar_file_read()`](https://docs.ropensci.org/tarchetypes/reference/tar_file_read.html)
-for CSV files. Creates a pair of targets: one to track the file with
+for Parquet files. Creates a pair of targets: one to track the file with
 `format = "file"`, and another to read the file with
-[`readr::read_csv()`](https://readr.tidyverse.org/reference/read_delim.html).
+[`arrow::read_parquet()`](https://arrow.apache.org/docs/r/reference/read_parquet.html).
 
 ## Usage
 
 ``` r
-tar_csv_read(name, command, .read_csv_args = list(show_col_types = FALSE), ...)
+tar_parquet_read(name, command, .read_parquet_args, ...)
 ```
 
 ## Arguments
@@ -20,14 +20,12 @@ tar_csv_read(name, command, .read_csv_args = list(show_col_types = FALSE), ...)
 
 - command:
 
-  Expression, R code that returns the file path to the CSV.
+  Expression, R code that returns the file path to the Parquet file.
 
-- .read_csv_args:
+- .read_parquet_args:
 
   A named list of additional arguments passed to
-  [`readr::read_csv()`](https://readr.tidyverse.org/reference/read_delim.html).
-  Defaults to `list(show_col_types = FALSE)`. Supplying this argument
-  replaces the defaults entirely.
+  [`arrow::read_parquet()`](https://arrow.apache.org/docs/r/reference/read_parquet.html).
 
 - ...:
 
@@ -38,7 +36,7 @@ tar_csv_read(name, command, .read_csv_args = list(show_col_types = FALSE), ...)
 ## Value
 
 A list of two target objects: a file-tracking target (`name_file`) and a
-CSV-reading target (`name`).
+Parquet-reading target (`name`).
 
 ## Examples
 
@@ -48,7 +46,7 @@ targets::tar_dir({
   targets::tar_script({
     library(targets)
     list(
-      epitargets::tar_csv_read(my_data, "data.csv")
+      epitargets::tar_parquet_read(my_data, "data.parquet")
     )
   })
   targets::tar_manifest()

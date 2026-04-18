@@ -1,5 +1,10 @@
 # Changelog
 
+## epitargets 0.3.0
+
+- Added
+  [`tar_parquet_read()`](https://economic.github.io/epitargets/reference/tar_parquet_read.md)
+
 ## epitargets 0.2.0
 
 - Added

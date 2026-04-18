@@ -10,5 +10,7 @@
   : Create an age-cued target with a companion date target
 - [`tar_csv_read()`](https://economic.github.io/epitargets/reference/tar_csv_read.md)
   : Read a CSV file as a target
+- [`tar_parquet_read()`](https://economic.github.io/epitargets/reference/tar_parquet_read.md)
+  : Read a Parquet file as a target
 - [`tar_target_date()`](https://economic.github.io/epitargets/reference/tar_target_date.md)
   : Create a target with a companion date target
