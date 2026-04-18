@@ -4,6 +4,7 @@
 # epitargets <a href="https://economic.github.io/epitargets/"><img src="man/figures/logo.png" align="right" width="120" /></a>
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 epitargets extends the [{targets}](https://docs.ropensci.org/targets/)
@@ -54,7 +55,7 @@ targets::tar_dir({
 #> 3 2022   16
 #> 4 2023   17
 #> 5 2024   18
-#> [1] "2026-03-13"
+#> [1] "2026-04-18"
 ```
 
 ### Auto-refresh targets on a schedule
@@ -76,12 +77,12 @@ targets::tar_dir({
   print(targets::tar_read(daily_data_date))
 })
 #> + daily_data dispatched
-#> ✔ daily_data completed [0ms, 96 B]
+#> ✔ daily_data completed [0ms, 94 B]
 #> + daily_data_date dispatched
-#> ✔ daily_data_date completed [0ms, 81 B]
-#> ✔ ended pipeline [116ms, 2 completed, 0 skipped]
-#> [1] "2026-03-13 10:35:03 EDT"
-#> [1] "2026-03-13"
+#> ✔ daily_data_date completed [1ms, 81 B]
+#> ✔ ended pipeline [115ms, 2 completed, 0 skipped]
+#> [1] "2026-04-18 15:00:32 EDT"
+#> [1] "2026-04-18"
 ```
 
 ### Summarize freshness across targets
@@ -103,7 +104,7 @@ targets::tar_dir({
   targets::tar_read(freshness)
 })
 #> + prices dispatched
-#> ✔ prices completed [1ms, 118 B]
+#> ✔ prices completed [0ms, 118 B]
 #> + wages dispatched
 #> ✔ wages completed [0ms, 118 B]
 #> + prices_date dispatched
@@ -111,11 +112,11 @@ targets::tar_dir({
 #> + wages_date dispatched
 #> ✔ wages_date completed [0ms, 81 B]
 #> + freshness dispatched
-#> ✔ freshness completed [2ms, 179 B]
+#> ✔ freshness completed [3ms, 179 B]
 #> ✔ ended pipeline [142ms, 5 completed, 0 skipped]
 #> # A tibble: 2 × 2
 #>   name   time      
 #>   <chr>  <date>    
-#> 1 wages  2026-03-13
-#> 2 prices 2026-03-13
+#> 1 wages  2026-04-18
+#> 2 prices 2026-04-18
 ```

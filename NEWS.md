@@ -1,3 +1,7 @@
+# epitargets 0.3.0
+
+- Added `tar_parquet_read()`
+
 # epitargets 0.2.0
 
 * Added `tar_csv_read()`

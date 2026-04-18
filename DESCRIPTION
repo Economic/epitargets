@@ -1,6 +1,6 @@
 Package: epitargets
 Title: Economic Policy Institute tools for working with targets
-Version: 0.2.0
+Version: 0.3.0
 Authors@R:
     c(person(given = "Ben",
              family = "Zipperer",
@@ -13,6 +13,7 @@ License: MIT + file LICENSE
 URL: https://economic.github.io/epitargets/, https://github.com/Economic/epitargets
 BugReports: https://github.com/economic/epitargets/issues
 Imports:
+    arrow,
     readr,
     targets,
     tarchetypes,

@@ -4,14 +4,14 @@
 \alias{tar_csv_read}
 \title{Read a CSV file as a target}
 \usage{
-tar_csv_read(name, command, .readr_args = list(show_col_types = FALSE), ...)
+tar_csv_read(name, command, .read_csv_args = list(show_col_types = FALSE), ...)
 }
 \arguments{
 \item{name}{Symbol, name of the target.}
 
 \item{command}{Expression, R code that returns the file path to the CSV.}
 
-\item{.readr_args}{A named list of additional arguments passed to
+\item{.read_csv_args}{A named list of additional arguments passed to
 \code{\link[readr:read_delim]{readr::read_csv()}}. Defaults to \code{list(show_col_types = FALSE)}.
 Supplying this argument replaces the defaults entirely.}
 

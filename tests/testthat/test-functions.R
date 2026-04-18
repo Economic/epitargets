@@ -23,6 +23,102 @@ test_that("create_csv returns the path invisibly", {
   expect_false(out$visible)
 })
 
+# -- tar_csv_read --------------------------------------------------------------
+
+test_that("tar_csv_read returns a file target and a read target with correct names", {
+  result <- tar_csv_read(my_data, "data.csv")
+
+  expect_type(result, "list")
+  expect_length(result, 2)
+  expect_equal(result[[1]]$settings$name, "my_data_file")
+  expect_equal(result[[1]]$settings$format, "file")
+  expect_equal(result[[2]]$settings$name, "my_data")
+})
+
+test_that("tar_csv_read builds a readr::read_csv call referencing the file target", {
+  result <- tar_csv_read(my_data, "data.csv")
+  read_expr <- result[[2]]$command$expr[[1]]
+
+  expect_equal(read_expr[[1]], quote(readr::read_csv))
+  expect_equal(read_expr$file, quote(my_data_file))
+  expect_equal(read_expr$show_col_types, FALSE)
+})
+
+test_that("tar_csv_read .read_csv_args overrides defaults", {
+  result <- tar_csv_read(
+    my_data,
+    "data.csv",
+    .read_csv_args = list(col_types = "ii", skip = 1)
+  )
+  read_expr <- result[[2]]$command$expr[[1]]
+
+  expect_equal(read_expr$col_types, "ii")
+  expect_equal(read_expr$skip, 1)
+  expect_null(read_expr$show_col_types)
+})
+
+test_that("tar_csv_read actually reads a CSV file end-to-end", {
+  tmp <- tempfile(fileext = ".csv")
+  on.exit(unlink(tmp))
+  df <- data.frame(x = 1:3, y = letters[1:3])
+  readr::write_csv(df, tmp)
+
+  result <- eval(bquote(tar_csv_read(my_data, .(tmp))))
+  my_data_file <- eval(result[[1]]$command$expr[[1]])
+  read_expr <- result[[2]]$command$expr[[1]]
+  out <- eval(read_expr)
+
+  expect_s3_class(out, "tbl_df")
+  expect_equal(out$x, 1:3)
+  expect_equal(out$y, letters[1:3])
+})
+
+# -- tar_parquet_read ----------------------------------------------------------
+
+test_that("tar_parquet_read returns a file target and a read target with correct names", {
+  result <- tar_parquet_read(my_data, "data.parquet")
+
+  expect_type(result, "list")
+  expect_length(result, 2)
+  expect_equal(result[[1]]$settings$name, "my_data_file")
+  expect_equal(result[[1]]$settings$format, "file")
+  expect_equal(result[[2]]$settings$name, "my_data")
+})
+
+test_that("tar_parquet_read builds an arrow::read_parquet call referencing the file target", {
+  result <- tar_parquet_read(my_data, "data.parquet")
+  read_expr <- result[[2]]$command$expr[[1]]
+
+  expect_equal(read_expr[[1]], quote(arrow::read_parquet))
+  expect_equal(read_expr$file, quote(my_data_file))
+})
+
+test_that("tar_parquet_read .read_parquet_args are passed through", {
+  result <- tar_parquet_read(
+    my_data,
+    "data.parquet",
+    .read_parquet_args = list(col_select = "x")
+  )
+  read_expr <- result[[2]]$command$expr[[1]]
+
+  expect_equal(read_expr$col_select, "x")
+})
+
+test_that("tar_parquet_read actually reads a Parquet file end-to-end", {
+  tmp <- tempfile(fileext = ".parquet")
+  on.exit(unlink(tmp))
+  df <- data.frame(x = 1:3, y = letters[1:3])
+  arrow::write_parquet(df, tmp)
+
+  result <- eval(bquote(tar_parquet_read(my_data, .(tmp))))
+  my_data_file <- eval(result[[1]]$command$expr[[1]])
+  read_expr <- result[[2]]$command$expr[[1]]
+  out <- eval(read_expr)
+
+  expect_equal(out$x, 1:3)
+  expect_equal(out$y, letters[1:3])
+})
+
 # -- tar_target_date -----------------------------------------------------------
 
 test_that("tar_target_date returns a list of two targets with correct names", {
