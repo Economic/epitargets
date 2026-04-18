@@ -27,6 +27,11 @@ A convenience wrapper around \code{\link[tarchetypes:tar_file_read]{tarchetypes:
 Creates a pair of targets: one to track the file with \code{format = "file"},
 and another to read the file with \code{\link[readr:read_delim]{readr::read_csv()}}.
 }
+\details{
+The storage format of the read target is inherited from
+\code{targets::tar_option_get("format")} (by default \code{"rds"}). Callers can
+override it by passing e.g. \code{format = "qs"} via \code{...}.
+}
 \examples{
 if (identical(Sys.getenv("TAR_EXAMPLES"), "true")) {
 targets::tar_dir({

@@ -27,6 +27,12 @@ A convenience wrapper around \code{\link[tarchetypes:tar_file_read]{tarchetypes:
 files. Creates a pair of targets: one to track the file with
 \code{format = "file"}, and another to read the file with \code{\link[arrow:read_parquet]{arrow::read_parquet()}}.
 }
+\details{
+The read target's storage format defaults to \code{"parquet"} (overriding
+the usual \code{targets::tar_option_get("format")} inheritance), so the cached
+object is written as a Parquet file in \verb{_targets/objects/}. Callers can
+override this by passing e.g. \code{format = "rds"} via \code{...}.
+}
 \examples{
 if (identical(Sys.getenv("TAR_EXAMPLES"), "true")) {
 targets::tar_dir({

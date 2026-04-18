@@ -12,6 +12,10 @@
 #' @param ... Additional arguments passed to [targets::tar_target_raw()]
 #'   for the read target.
 #'
+#' @details The storage format of the read target is inherited from
+#'   `targets::tar_option_get("format")` (by default `"rds"`). Callers can
+#'   override it by passing e.g. `format = "qs"` via `...`.
+#'
 #' @return A list of two target objects: a file-tracking target
 #'   (`name_file`) and a CSV-reading target (`name`).
 #' @export
@@ -71,6 +75,11 @@ tar_csv_read <- function(
 #' @param ... Additional arguments passed to [targets::tar_target_raw()]
 #'   for the read target.
 #'
+#' @details The read target's storage format defaults to `"parquet"` (overriding
+#'   the usual `targets::tar_option_get("format")` inheritance), so the cached
+#'   object is written as a Parquet file in `_targets/objects/`. Callers can
+#'   override this by passing e.g. `format = "rds"` via `...`.
+#'
 #' @return A list of two target objects: a file-tracking target
 #'   (`name_file`) and a Parquet-reading target (`name`).
 #' @export
@@ -103,17 +112,26 @@ tar_parquet_read <- function(
     read_args
   ))
 
+  user_has_format <- "format" %in% ...names()
+
+  read_target <- if (user_has_format) {
+    targets::tar_target_raw(name = name_str, command = read_call, ...)
+  } else {
+    targets::tar_target_raw(
+      name = name_str,
+      command = read_call,
+      format = "parquet",
+      ...
+    )
+  }
+
   list(
     targets::tar_target_raw(
       name = name_file,
       command = command_expr,
       format = "file"
     ),
-    targets::tar_target_raw(
-      name = name_str,
-      command = read_call,
-      ...
-    )
+    read_target
   )
 }
 

@@ -93,6 +93,16 @@ test_that("tar_parquet_read builds an arrow::read_parquet call referencing the f
   expect_equal(read_expr$file, quote(my_data_file))
 })
 
+test_that("tar_parquet_read sets read target format to 'parquet' by default", {
+  result <- tar_parquet_read(my_data, "data.parquet")
+  expect_equal(result[[2]]$settings$format, "parquet")
+})
+
+test_that("tar_parquet_read format can be overridden via ...", {
+  result <- tar_parquet_read(my_data, "data.parquet", format = "rds")
+  expect_equal(result[[2]]$settings$format, "rds")
+})
+
 test_that("tar_parquet_read .read_parquet_args are passed through", {
   result <- tar_parquet_read(
     my_data,
