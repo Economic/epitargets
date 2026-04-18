@@ -40,6 +40,12 @@ tar_csv_read(name, command, .read_csv_args = list(show_col_types = FALSE), ...)
 A list of two target objects: a file-tracking target (`name_file`) and a
 CSV-reading target (`name`).
 
+## Details
+
+The storage format of the read target is inherited from
+`targets::tar_option_get("format")` (by default `"rds"`). Callers can
+override it by passing e.g. `format = "qs"` via `...`.
+
 ## Examples
 
 ``` r

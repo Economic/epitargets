@@ -75,6 +75,12 @@ for the read target.</p></dd>
     <p>A list of two target objects: a file-tracking target
 (<code>name_file</code>) and a CSV-reading target (<code>name</code>).</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The storage format of the read target is inherited from
+<code>targets::tar_option_get("format")</code> (by default <code>"rds"</code>). Callers can
+override it by passing e.g. <code>format = "qs"</code> via <code>...</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

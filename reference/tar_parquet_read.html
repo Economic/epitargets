@@ -75,6 +75,13 @@ for the read target.</p></dd>
     <p>A list of two target objects: a file-tracking target
 (<code>name_file</code>) and a Parquet-reading target (<code>name</code>).</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The read target's storage format defaults to <code>"parquet"</code> (overriding
+the usual <code>targets::tar_option_get("format")</code> inheritance), so the cached
+object is written as a Parquet file in <code>_targets/objects/</code>. Callers can
+override this by passing e.g. <code>format = "rds"</code> via <code>...</code>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>

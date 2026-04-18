@@ -38,6 +38,13 @@ tar_parquet_read(name, command, .read_parquet_args, ...)
 A list of two target objects: a file-tracking target (`name_file`) and a
 Parquet-reading target (`name`).
 
+## Details
+
+The read target's storage format defaults to `"parquet"` (overriding the
+usual `targets::tar_option_get("format")` inheritance), so the cached
+object is written as a Parquet file in `_targets/objects/`. Callers can
+override this by passing e.g. `format = "rds"` via `...`.
+
 ## Examples
 
 ``` r
