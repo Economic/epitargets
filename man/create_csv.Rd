@@ -11,13 +11,13 @@ create_csv(data, file, ...)
 
 \item{file}{A string giving the file path to write to.}
 
-\item{...}{Additional arguments passed to \code{\link[readr:write_delim]{readr::write_csv()}}.}
+\item{...}{Additional arguments passed to \code{\link[readr:write_csv]{readr::write_csv()}}.}
 }
 \value{
 The file path \code{file}, invisibly.
 }
 \description{
-A thin wrapper around \code{\link[readr:write_delim]{readr::write_csv()}} that writes \code{data} to \code{file} and
+A thin wrapper around \code{\link[readr:write_csv]{readr::write_csv()}} that writes \code{data} to \code{file} and
 returns the file path. This is useful as a targets format function where the
 target value should be the path to the written file.
 }

@@ -89,3 +89,16 @@ targets::tar_dir({
   targets::tar_read(freshness)
 })
 ```
+
+### Read a target and keep a handle to it
+
+`tar_read_stash()` reads a target and, besides returning it, leaves a copy in the global environment as `.target` so you can keep exploring it without re-running the read:
+
+```r
+tar_read_stash(wages)
+.target |> dplyr::filter(year == 2024)
+```
+
+It really shines as an RStudio/Positron addin. Put the cursor on a target name in `_targets.R` or an analysis script and trigger the **"Stash target under cursor"** addin (bind it to a keyboard shortcut, just like `targets::rstudio_addin_tar_read()`). The value prints to the console and lands in `.target`.
+
+The addin extracts the symbol under the cursor with [`atcursor`](https://github.com/MilesMcBain/atcursor), an optional dependency. If it isn't installed the addin will offer to install it for you from its r-universe repository.

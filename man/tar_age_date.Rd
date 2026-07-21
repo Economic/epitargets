@@ -14,7 +14,7 @@ tar_age_date(name, command, age = as.difftime(1, units = "days"), ...)
 \item{age}{A \link{difftime} object specifying the maximum age before the target
 re-runs. Defaults to 1 day.}
 
-\item{...}{Additional arguments passed to \code{\link[targets:tar_target]{targets::tar_target_raw()}}.}
+\item{...}{Additional arguments passed to \code{\link[targets:tar_target_raw]{targets::tar_target_raw()}}.}
 }
 \value{
 A list of two target objects: the primary target (with an age cue)
@@ -22,7 +22,7 @@ and the companion \verb{_date} target.
 }
 \description{
 Like \code{\link[=tar_target_date]{tar_target_date()}} but adds an age-based cue via
-\code{\link[tarchetypes:tar_cue_age]{tarchetypes::tar_cue_age_raw()}} so the target automatically re-runs after
+\code{\link[tarchetypes:tar_cue_age_raw]{tarchetypes::tar_cue_age_raw()}} so the target automatically re-runs after
 a configurable time period. Useful for targets that fetch data from APIs.
 }
 \examples{

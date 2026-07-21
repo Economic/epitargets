@@ -7,3 +7,4 @@
 ^\.claude$
 ^README\.Rmd$
 ^data-raw$
+^plans$

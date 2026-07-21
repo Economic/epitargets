@@ -11,14 +11,14 @@ tar_target_date(name, command, ...)
 
 \item{command}{Expression, R command to run the target.}
 
-\item{...}{Additional arguments passed to \code{\link[targets:tar_target]{targets::tar_target_raw()}}.}
+\item{...}{Additional arguments passed to \code{\link[targets:tar_target_raw]{targets::tar_target_raw()}}.}
 }
 \value{
 A list of two target objects: the primary target and the companion
 \verb{_date} target.
 }
 \description{
-Wraps \code{\link[targets:tar_target]{targets::tar_target_raw()}} to create a primary target and a companion
+Wraps \code{\link[targets:tar_target_raw]{targets::tar_target_raw()}} to create a primary target and a companion
 \verb{_date} target that records \code{\link[=Sys.Date]{Sys.Date()}} whenever the primary target runs.
 }
 \examples{

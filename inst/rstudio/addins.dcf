@@ -1,0 +1,4 @@
+Name: Stash target under cursor
+Description: Read the target named under the cursor and stash it as .target in the global environment.
+Binding: rstudio_addin_tar_read_stash
+Interactive: false

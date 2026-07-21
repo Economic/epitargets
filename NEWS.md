@@ -1,3 +1,7 @@
+# epitargets 0.4.0
+
+- Added `tar_read_stash()` and the addin `rstudio_addin_tar_read_stash()`
+
 # epitargets 0.3.0
 
 - Added `tar_parquet_read()`

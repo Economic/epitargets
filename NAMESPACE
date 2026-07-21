@@ -2,7 +2,9 @@
 
 export(collect_target_date)
 export(create_csv)
+export(rstudio_addin_tar_read_stash)
 export(tar_age_date)
 export(tar_csv_read)
 export(tar_parquet_read)
+export(tar_read_stash)
 export(tar_target_date)

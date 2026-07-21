@@ -12,10 +12,10 @@ tar_csv_read(name, command, .read_csv_args = list(show_col_types = FALSE), ...)
 \item{command}{Expression, R code that returns the file path to the CSV.}
 
 \item{.read_csv_args}{A named list of additional arguments passed to
-\code{\link[readr:read_delim]{readr::read_csv()}}. Defaults to \code{list(show_col_types = FALSE)}.
+\code{\link[readr:read_csv]{readr::read_csv()}}. Defaults to \code{list(show_col_types = FALSE)}.
 Supplying this argument replaces the defaults entirely.}
 
-\item{...}{Additional arguments passed to \code{\link[targets:tar_target]{targets::tar_target_raw()}}
+\item{...}{Additional arguments passed to \code{\link[targets:tar_target_raw]{targets::tar_target_raw()}}
 for the read target.}
 }
 \value{
@@ -25,7 +25,7 @@ A list of two target objects: a file-tracking target
 \description{
 A convenience wrapper around \code{\link[tarchetypes:tar_file_read]{tarchetypes::tar_file_read()}} for CSV files.
 Creates a pair of targets: one to track the file with \code{format = "file"},
-and another to read the file with \code{\link[readr:read_delim]{readr::read_csv()}}.
+and another to read the file with \code{\link[readr:read_csv]{readr::read_csv()}}.
 }
 \details{
 The storage format of the read target is inherited from

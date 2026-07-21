@@ -15,7 +15,7 @@ file.}
 \item{.read_parquet_args}{A named list of additional arguments passed to
 \code{\link[arrow:read_parquet]{arrow::read_parquet()}}.}
 
-\item{...}{Additional arguments passed to \code{\link[targets:tar_target]{targets::tar_target_raw()}}
+\item{...}{Additional arguments passed to \code{\link[targets:tar_target_raw]{targets::tar_target_raw()}}
 for the read target.}
 }
 \value{
