@@ -7,6 +7,7 @@ other convenience functions.
 ## Installation
 
 ``` r
+
 install.packages(
    "epitargets",
    repos = c("https://economic.r-universe.dev", getOption("repos"))
@@ -16,6 +17,7 @@ install.packages(
 ## Usage
 
 ``` r
+
 library(epitargets)
 ```
 
@@ -28,6 +30,7 @@ It creates your target plus a companion `_date` target that records when
 it ran:
 
 ``` r
+
 targets::tar_dir({
   targets::tar_script({
     library(epitargets)
@@ -40,17 +43,17 @@ targets::tar_dir({
   print(targets::tar_read(wages_date))
 })
 #> + wages dispatched
-#> ✔ wages completed [1ms, 191 B]
+#> ✔ wages completed [0ms, 191 B]
 #> + wages_date dispatched
 #> ✔ wages_date completed [0ms, 81 B]
-#> ✔ ended pipeline [117ms, 2 completed, 0 skipped]
+#> ✔ ended pipeline [124ms, 2 completed, 0 skipped]
 #>   year wage
 #> 1 2020   15
 #> 2 2021   15
 #> 3 2022   16
 #> 4 2023   17
 #> 5 2024   18
-#> [1] "2026-04-18"
+#> [1] "2026-07-04"
 ```
 
 ### Auto-refresh targets on a schedule
@@ -60,6 +63,7 @@ adds an age-based cue so the target automatically re-runs after a time
 period. Useful for API calls or any data that goes stale:
 
 ``` r
+
 targets::tar_dir({
   targets::tar_script({
     library(epitargets)
@@ -72,12 +76,12 @@ targets::tar_dir({
   print(targets::tar_read(daily_data_date))
 })
 #> + daily_data dispatched
-#> ✔ daily_data completed [0ms, 94 B]
+#> ✔ daily_data completed [0ms, 96 B]
 #> + daily_data_date dispatched
-#> ✔ daily_data_date completed [1ms, 81 B]
-#> ✔ ended pipeline [115ms, 2 completed, 0 skipped]
-#> [1] "2026-04-18 15:00:32 EDT"
-#> [1] "2026-04-18"
+#> ✔ daily_data_date completed [0ms, 81 B]
+#> ✔ ended pipeline [127ms, 2 completed, 0 skipped]
+#> [1] "2026-07-04 15:41:27 EDT"
+#> [1] "2026-07-04"
 ```
 
 ### Summarize freshness across targets
@@ -87,6 +91,7 @@ gathers `_date` targets into a single tibble so you can see at a glance
 when each target last ran:
 
 ``` r
+
 targets::tar_dir({
   targets::tar_script({
     library(epitargets)
@@ -100,19 +105,44 @@ targets::tar_dir({
   targets::tar_read(freshness)
 })
 #> + prices dispatched
-#> ✔ prices completed [0ms, 118 B]
+#> ✔ prices completed [1ms, 118 B]
 #> + wages dispatched
-#> ✔ wages completed [0ms, 118 B]
+#> ✔ wages completed [1ms, 118 B]
 #> + prices_date dispatched
 #> ✔ prices_date completed [0ms, 81 B]
 #> + wages_date dispatched
 #> ✔ wages_date completed [0ms, 81 B]
 #> + freshness dispatched
-#> ✔ freshness completed [3ms, 179 B]
-#> ✔ ended pipeline [142ms, 5 completed, 0 skipped]
+#> ✔ freshness completed [2ms, 179 B]
+#> ✔ ended pipeline [148ms, 5 completed, 0 skipped]
 #> # A tibble: 2 × 2
 #>   name   time      
 #>   <chr>  <date>    
-#> 1 wages  2026-04-18
-#> 2 prices 2026-04-18
+#> 1 wages  2026-07-04
+#> 2 prices 2026-07-04
 ```
+
+### Read a target and keep a handle to it
+
+[`tar_read_stash()`](https://economic.github.io/epitargets/reference/tar_read_stash.md)
+reads a target and, besides returning it, leaves a copy in the global
+environment as `.target` so you can keep exploring it without re-running
+the read:
+
+``` r
+
+tar_read_stash(wages)
+.target |> dplyr::filter(year == 2024)
+```
+
+It really shines as an RStudio/Positron addin. Put the cursor on a
+target name in `_targets.R` or an analysis script and trigger the
+**“Stash target under cursor”** addin (bind it to a keyboard shortcut,
+just like
+[`targets::rstudio_addin_tar_read()`](https://docs.ropensci.org/targets/reference/rstudio_addin_tar_read.html)).
+The value prints to the console and lands in `.target`.
+
+The addin extracts the symbol under the cursor with
+[`atcursor`](https://github.com/MilesMcBain/atcursor), an optional
+dependency. If it isn’t installed the addin will offer to install it for
+you from its r-universe repository.

@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Economic Policy Institute tools for working with targets">
 <meta name="description" content="Additional utilities to use the targets R package.">
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">epitargets</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,17 +92,17 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_read.html" class="external-link">tar_read</a></span><span class="op">(</span><span class="va">wages_date</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; + wages dispatched</span></span>
-<span><span class="co">#&gt; ✔ wages completed [1ms, 191 B]</span></span>
+<span><span class="co">#&gt; ✔ wages completed [0ms, 191 B]</span></span>
 <span><span class="co">#&gt; + wages_date dispatched</span></span>
 <span><span class="co">#&gt; ✔ wages_date completed [0ms, 81 B]</span></span>
-<span><span class="co">#&gt; ✔ ended pipeline [117ms, 2 completed, 0 skipped]</span></span>
+<span><span class="co">#&gt; ✔ ended pipeline [124ms, 2 completed, 0 skipped]</span></span>
 <span><span class="co">#&gt;   year wage</span></span>
 <span><span class="co">#&gt; 1 2020   15</span></span>
 <span><span class="co">#&gt; 2 2021   15</span></span>
 <span><span class="co">#&gt; 3 2022   16</span></span>
 <span><span class="co">#&gt; 4 2023   17</span></span>
 <span><span class="co">#&gt; 5 2024   18</span></span>
-<span><span class="co">#&gt; [1] "2026-04-18"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "2026-07-04"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="auto-refresh-targets-on-a-schedule">Auto-refresh targets on a schedule<a class="anchor" aria-label="anchor" href="#auto-refresh-targets-on-a-schedule"></a>
@@ -121,12 +121,12 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_read.html" class="external-link">tar_read</a></span><span class="op">(</span><span class="va">daily_data_date</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; + daily_data dispatched</span></span>
-<span><span class="co">#&gt; ✔ daily_data completed [0ms, 94 B]</span></span>
+<span><span class="co">#&gt; ✔ daily_data completed [0ms, 96 B]</span></span>
 <span><span class="co">#&gt; + daily_data_date dispatched</span></span>
-<span><span class="co">#&gt; ✔ daily_data_date completed [1ms, 81 B]</span></span>
-<span><span class="co">#&gt; ✔ ended pipeline [115ms, 2 completed, 0 skipped]</span></span>
-<span><span class="co">#&gt; [1] "2026-04-18 15:00:32 EDT"</span></span>
-<span><span class="co">#&gt; [1] "2026-04-18"</span></span></code></pre></div>
+<span><span class="co">#&gt; ✔ daily_data_date completed [0ms, 81 B]</span></span>
+<span><span class="co">#&gt; ✔ ended pipeline [127ms, 2 completed, 0 skipped]</span></span>
+<span><span class="co">#&gt; [1] "2026-07-04 15:41:27 EDT"</span></span>
+<span><span class="co">#&gt; [1] "2026-07-04"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="summarize-freshness-across-targets">Summarize freshness across targets<a class="anchor" aria-label="anchor" href="#summarize-freshness-across-targets"></a>
@@ -146,21 +146,31 @@
 <span>  <span class="fu">targets</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/targets/reference/tar_read.html" class="external-link">tar_read</a></span><span class="op">(</span><span class="va">freshness</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; + prices dispatched</span></span>
-<span><span class="co">#&gt; ✔ prices completed [0ms, 118 B]</span></span>
+<span><span class="co">#&gt; ✔ prices completed [1ms, 118 B]</span></span>
 <span><span class="co">#&gt; + wages dispatched</span></span>
-<span><span class="co">#&gt; ✔ wages completed [0ms, 118 B]</span></span>
+<span><span class="co">#&gt; ✔ wages completed [1ms, 118 B]</span></span>
 <span><span class="co">#&gt; + prices_date dispatched</span></span>
 <span><span class="co">#&gt; ✔ prices_date completed [0ms, 81 B]</span></span>
 <span><span class="co">#&gt; + wages_date dispatched</span></span>
 <span><span class="co">#&gt; ✔ wages_date completed [0ms, 81 B]</span></span>
 <span><span class="co">#&gt; + freshness dispatched</span></span>
-<span><span class="co">#&gt; ✔ freshness completed [3ms, 179 B]</span></span>
-<span><span class="co">#&gt; ✔ ended pipeline [142ms, 5 completed, 0 skipped]</span></span>
+<span><span class="co">#&gt; ✔ freshness completed [2ms, 179 B]</span></span>
+<span><span class="co">#&gt; ✔ ended pipeline [148ms, 5 completed, 0 skipped]</span></span>
 <span><span class="co">#&gt; # A tibble: 2 × 2</span></span>
 <span><span class="co">#&gt;   name   time      </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;date&gt;    </span></span>
-<span><span class="co">#&gt; 1 wages  2026-04-18</span></span>
-<span><span class="co">#&gt; 2 prices 2026-04-18</span></span></code></pre></div>
+<span><span class="co">#&gt; 1 wages  2026-07-04</span></span>
+<span><span class="co">#&gt; 2 prices 2026-07-04</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="read-a-target-and-keep-a-handle-to-it">Read a target and keep a handle to it<a class="anchor" aria-label="anchor" href="#read-a-target-and-keep-a-handle-to-it"></a>
+</h3>
+<p><code><a href="reference/tar_read_stash.html">tar_read_stash()</a></code> reads a target and, besides returning it, leaves a copy in the global environment as <code>.target</code> so you can keep exploring it without re-running the read:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/tar_read_stash.html">tar_read_stash</a></span><span class="op">(</span><span class="va">wages</span><span class="op">)</span></span>
+<span><span class="va">.target</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2024</span><span class="op">)</span></span></code></pre></div>
+<p>It really shines as an RStudio/Positron addin. Put the cursor on a target name in <code>_targets.R</code> or an analysis script and trigger the <strong>“Stash target under cursor”</strong> addin (bind it to a keyboard shortcut, just like <code><a href="https://docs.ropensci.org/targets/reference/rstudio_addin_tar_read.html" class="external-link">targets::rstudio_addin_tar_read()</a></code>). The value prints to the console and lands in <code>.target</code>.</p>
+<p>The addin extracts the symbol under the cursor with <a href="https://github.com/MilesMcBain/atcursor" class="external-link"><code>atcursor</code></a>, an optional dependency. If it isn’t installed the addin will offer to install it for you from its r-universe repository.</p>
 </div>
 </div>
 </div>

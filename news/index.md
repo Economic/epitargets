@@ -1,5 +1,12 @@
 # Changelog
 
+## epitargets 0.4.0
+
+- Added
+  [`tar_read_stash()`](https://economic.github.io/epitargets/reference/tar_read_stash.md)
+  and the addin
+  [`rstudio_addin_tar_read_stash()`](https://economic.github.io/epitargets/reference/rstudio_addin_tar_read_stash.md)
+
 ## epitargets 0.3.0
 
 - Added

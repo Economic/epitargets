@@ -9,9 +9,11 @@
 <url><loc>https://economic.github.io/epitargets/reference/collect_target_date.html</loc></url>
 <url><loc>https://economic.github.io/epitargets/reference/create_csv.html</loc></url>
 <url><loc>https://economic.github.io/epitargets/reference/index.html</loc></url>
+<url><loc>https://economic.github.io/epitargets/reference/rstudio_addin_tar_read_stash.html</loc></url>
 <url><loc>https://economic.github.io/epitargets/reference/tar_age_date.html</loc></url>
 <url><loc>https://economic.github.io/epitargets/reference/tar_csv_read.html</loc></url>
 <url><loc>https://economic.github.io/epitargets/reference/tar_parquet_read.html</loc></url>
+<url><loc>https://economic.github.io/epitargets/reference/tar_read_stash.html</loc></url>
 <url><loc>https://economic.github.io/epitargets/reference/tar_target_date.html</loc></url>
 </urlset>
 
